@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pink Moon Radio</title>
+<meta name="description" content="Cozy lofi jazz, rain and study-with-me sessions under a pink moon, with Bijou the Yorkie.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Nunito:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: soft, cozy, late-night radio
+   IDEA: a little radio station card glowing under a pink moon
+   PICTURE: the channel banner as a night window, profile set inside a glowing moon
+   COLOUR and TYPE: deep plum night, rose-pink moon, warm cream buttons; Baloo 2 + Nunito
+   LAYOUT: one centered phone-width column: header art, links, latest videos, footer */
+:root{color-scheme:dark;--bg:#1d1430;--bg2:#2a1c44;--ink:#fbeff2;--soft:#d9c4dc;--pink:#f3a6c0;--pink2:#ffd3e1;--cream:#fff6ea;--cream-ink:#3a2347;--line:rgba(255,214,228,.18)}
+:root[data-theme=light],:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:radial-gradient(120% 70% at 50% 0%,#3b2460 0%,var(--bg) 55%,#140d22 100%) fixed;color:var(--ink);font:16px/1.55 Nunito,system-ui,sans-serif;overflow-x:clip;min-height:100vh}
+.stars{position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(1.5px 1.5px at 12% 18%,#fff8 50%,transparent 51%),radial-gradient(1px 1px at 78% 12%,#fff9 50%,transparent 51%),radial-gradient(1.5px 1.5px at 88% 40%,#fff6 50%,transparent 51%),radial-gradient(1px 1px at 22% 62%,#fff7 50%,transparent 51%),radial-gradient(1px 1px at 64% 80%,#fff6 50%,transparent 51%),radial-gradient(1.5px 1.5px at 40% 30%,#ffd3e199 50%,transparent 51%)}
+main{position:relative;max-width:560px;margin:0 auto;padding:20px 16px 40px}
+.hero{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:16/9;box-shadow:0 18px 50px #0008;border:1px solid var(--line)}
+.hero img{width:100%;height:100%;object-fit:cover;display:block}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,#1d1430e6 100%)}
+.moon{position:relative;width:132px;height:132px;margin:-70px auto 0;border-radius:50%;padding:6px;background:radial-gradient(circle at 35% 30%,var(--pink2),var(--pink) 60%,#d97ea0);box-shadow:0 0 0 6px #f3a6c033,0 0 60px 10px #f3a6c066;z-index:2;animation:glow 6s ease-in-out infinite}
+.moon img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;border:3px solid var(--bg)}
+@keyframes glow{50%{box-shadow:0 0 0 8px #f3a6c022,0 0 80px 18px #f3a6c055}}
+h1{font:700 clamp(34px,8vw,44px)/1.05 "Baloo 2",system-ui,sans-serif;text-align:center;margin:14px 0 4px;color:var(--pink2);text-wrap:balance}
+.tag{text-align:center;color:var(--soft);margin:0 auto 6px;max-width:34ch}
+.handle{text-align:center;font-weight:700;color:var(--pink);margin:0 0 22px;font-size:15px}
+.links{display:grid;gap:12px}
+.btn{display:flex;align-items:center;gap:14px;min-height:60px;padding:12px 18px;border-radius:18px;background:var(--cream);color:var(--cream-ink);text-decoration:none;font-weight:700;font-size:17px;box-shadow:0 6px 0 #c98aa4,0 10px 24px #0006;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 0 #c98aa4,0 14px 28px #0007}
+.btn:active{transform:translateY(3px);box-shadow:0 3px 0 #c98aa4,0 6px 14px #0006}
+.btn:focus-visible,.copy:focus-visible,.card:focus-visible{outline:3px solid var(--pink2);outline-offset:3px}
+.btn svg{flex:none;width:28px;height:28px}
+.btn span{flex:1}
+.btn small{display:block;font-weight:500;font-size:13px;color:#7a5a83}
+.btn.main{background:linear-gradient(135deg,#ffb3cb,#f38fb1);color:#3a1630;box-shadow:0 6px 0 #b55d82,0 10px 24px #0006}
+.btn.main small{color:#5d2848}
+.btn .arrow{flex:none;width:18px;height:18px;opacity:.55}
+h2{font:700 22px/1.2 "Baloo 2",system-ui,sans-serif;margin:34px 0 12px;color:var(--pink2)}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.card{display:block;text-decoration:none;color:var(--ink);background:var(--bg2);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .15s}
+.card:hover{transform:translateY(-2px)}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.card div{padding:9px 12px 12px;font-weight:700;font-size:14px;line-height:1.3}
+.card small{display:block;color:var(--soft);font-weight:500;font-size:13px;margin-top:2px}
+.card.wide{grid-column:1/-1}
+.card .soon{display:inline-block;background:var(--pink);color:#3a1630;border-radius:99px;padding:1px 9px;font-size:13px;margin-bottom:4px}
+.share{margin-top:30px;text-align:center;padding:18px;border-radius:18px;border:1px dashed var(--line)}
+.share p{margin:0 0 10px;color:var(--soft)}
+.copy{min-height:44px;padding:10px 20px;border-radius:99px;border:0;background:var(--pink);color:#3a1630;font:700 16px Nunito,system-ui,sans-serif;cursor:pointer}
+footer{text-align:center;color:var(--soft);font-size:13px;margin-top:28px}
+@media(max-width:380px){.cards{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.moon{animation:none}.btn,.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="stars"></div>
+<main>
+  <div class="hero"><img src="img/banner.jpg" alt="Pink Moon Radio banner: a girl in a cream sweater with pink headphones studying with her Yorkie under a pink moon"></div>
+  <div class="moon"><img src="img/profile.jpg" alt="Pink Moon Radio profile picture"></div>
+  <h1>Pink Moon Radio</h1>
+  <p class="tag">Cozy lofi jazz, soft rain and study-with-me sessions under a pink moon, with Bijou the Yorkie 🌙</p>
+  <p class="handle">@PinkMoonRadioLofi · new videos every Sunday</p>
+
+  <nav class="links">
+    <a class="btn main" href="https://www.youtube.com/@PinkMoonRadioLofi?sub_confirmation=1" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .6 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-4.8 31 31 0 0 0-.4-4.8ZM9.8 15V9l5.7 3-5.7 3Z"/></svg>
+      <span>Subscribe on YouTube<small>Join the cozy club, it's free</small></span>
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="btn" href="https://www.youtube.com/@PinkMoonRadioLofi/videos" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="#f3a6c0"/><path fill="#3a2347" d="M10 8.5v7l5.5-3.5z"/></svg>
+      <span>Long study sessions<small>2 to 3 hour lofi, rain and Pomodoro videos</small></span>
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="btn" href="https://www.youtube.com/@PinkMoonRadioLofi/playlists" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="13" height="2.6" rx="1.3" fill="#3a2347"/><rect x="3" y="10.7" width="13" height="2.6" rx="1.3" fill="#3a2347"/><rect x="3" y="16.4" width="8" height="2.6" rx="1.3" fill="#3a2347"/><path fill="#f38fb1" d="M15 14.5v6l5-3z"/></svg>
+      <span>Playlists<small>Rainy night, sleepy lofi, Pomodoro and more</small></span>
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
+    </a>
+    <a class="btn" href="https://www.youtube.com/@PinkMoonRadioLofi/shorts" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="#3a2347"/><path fill="#f3a6c0" d="M10.5 9v6l4.5-3z"/></svg>
+      <span>Shorts<small>Little cozy moments with Bijou</small></span>
+      <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
+    </a>
+  </nav>
+
+  <h2>Latest from the station</h2>
+  <div class="cards">
+    <a class="card wide" href="https://www.youtube.com/@PinkMoonRadioLofi/videos" target="_blank" rel="noopener">
+      <img src="img/night_train.jpg" alt="Night Train lofi jazz thumbnail">
+      <div><span class="soon">Sunday, Nov 29 · 6 PM</span><br>Night Train Lofi Jazz 🌙<small>2 hours of rain, city lights and a sleepy Yorkie</small></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/@PinkMoonRadioLofi/videos" target="_blank" rel="noopener">
+      <img src="img/snowy_jazz.jpg" alt="Snowy Pink Moon Jazz thumbnail">
+      <div>Snowy Pink Moon Jazz<small>2 hr study with me</small></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/@PinkMoonRadioLofi/videos" target="_blank" rel="noopener">
+      <img src="img/rainy_cafe.jpg" alt="Rainy Café study with me thumbnail">
+      <div>Rainy Café Study With Me<small>3 hr Pomodoro session</small></div>
+    </a>
+  </div>
+
+  <div class="share">
+    <p>Know someone who studies better with music?</p>
+    <button class="copy" id="copy" type="button">Copy channel link</button>
+  </div>
+
+  <footer>Pink Moon Radio · made with love, rain and lofi 🎧</footer>
+</main>
+<script>
+{
+  const b = document.getElementById('copy');
+  const url = 'https://www.youtube.com/@PinkMoonRadioLofi';
+  b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(url); b.textContent = 'Copied! 💗'; }
+    catch (e) { b.textContent = url; }
+    setTimeout(() => { b.textContent = 'Copy channel link'; }, 2500);
+  });
+}
+</script>
+</body>
+</html>
